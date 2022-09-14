@@ -31,8 +31,8 @@ from xctestrunner.simulator_control import simulator_util
 from xctestrunner.test_runner import runner_exit_codes
 
 
-_XCODEBUILD_TEST_STARTUP_TIMEOUT_SEC = 150
-_SIM_TEST_MAX_ATTEMPTS = 3
+_XCODEBUILD_TEST_STARTUP_TIMEOUT_SEC = 140
+_SIM_TEST_MAX_ATTEMPTS = 2
 _DEVICE_TEST_MAX_ATTEMPTS = 2
 _TAIL_SIM_LOG_LINE = 200
 _BACKGROUND_TEST_RUNNER_ERROR = 'Failed to background test runner'
@@ -80,6 +80,13 @@ class CheckXcodebuildStuckThread(threading.Thread):
       logging.warning(
           'The xcodebuild command got stuck and has not started test in %d. '
           'Will kill the command directly.', self._startup_timeout_sec)
+
+
+      #print(subprocess.check_output(('cat', self._log)).decode('utf-8'))
+      subprocess.check_output(('sudo', 'sample',
+          str(self._xcodebuild_test_popen.pid), "-file", "/tmp/sometestsample")).decode('utf-8')
+
+      print(subprocess.check_output(('sudo', 'cat', "/tmp/sometestsample")).decode('utf-8'))
       self._is_xcodebuild_stuck = True
       self._xcodebuild_test_popen.terminate()
 
