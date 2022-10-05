@@ -70,6 +70,15 @@ def RunLogicTestOnSim(sim_id,
   command = [
       'xcrun', 'simctl', 'spawn', '-s', sim_id,
       xcode_info_util.GetXctestToolPath(ios_constants.SDK.IPHONESIMULATOR)]
+  print("COMMAND", command, file=sys.stderr)
+  print("ENV", simctl_env_vars, file=sys.stderr)
+  print("EXECUTABLE", sys.executable, file=sys.stderr)
+  print("ARGV", sys.argv, file=sys.stderr)
+
+  print("ENVIORN", os.environ)
+  os.system("arch")
+  sys.exit(1)
+
   if args:
     command += args
   if not tests_to_run:

@@ -143,6 +143,8 @@ def _AddTestSubParser(subparsers):
     """The function of sub command `test`."""
     sdk = _PlatformToSdk(args.platform) if args.platform else _GetSdk(args.id)
     device_arch = _GetDeviceArch(args.id, sdk)
+    print("XX3 ARCH/SDK", sdk, device_arch, file=sys.stderr)
+    sys.exit(1)
     with xctest_session.XctestSession(
         sdk=sdk,
         device_arch=device_arch,

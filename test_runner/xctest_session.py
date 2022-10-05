@@ -68,8 +68,8 @@ class XctestSession(object):
     self._logic_tests_to_run = None
     # The following fields are only for XCUITest.
     self._disable_uitest_auto_screenshots = True
-    print("XX2 ARCH/SDK", sdk, device_arch, file=sys.stderr)
-    sys.exit(1)
+    #print("XX2 ARCH/SDK", sdk, device_arch, file=sys.stderr)
+    #sys.exit(1)
 
   def __enter__(self):
     return self
