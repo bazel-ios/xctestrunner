@@ -18,6 +18,7 @@ import logging
 import os
 import shutil
 import tempfile
+import sys
 
 from xctestrunner.shared import bundle_util
 from xctestrunner.shared import ios_constants
@@ -296,6 +297,8 @@ class XctestRunFactory(object):
     Raises:
       IllegalArgumentError: when the sdk or test type is not supported.
     """
+    print("XX ARCH/SDK", sdk, device_arch, file=sys.stderr)
+    sys.exit(1)
     self._app_under_test_dir = app_under_test_dir
     self._test_bundle_dir = test_bundle_dir
     self._test_name = os.path.splitext(os.path.basename(test_bundle_dir))[0]

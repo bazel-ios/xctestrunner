@@ -297,6 +297,10 @@ def _GetDeviceArch(device_id, sdk):
   """Gets the device architecture."""
   # It is a temporary soluton to get device architecture. Checking i386 and
   # armv7/armv7s is not supported.
+  sys.stderr.write()
+  print("SOME_SDK", sdk, device_id, file=sys.stderr)
+  sys.exit(1)
+
   if sdk == ios_constants.SDK.IPHONESIMULATOR:
     return ios_constants.ARCH.X86_64
   if '-' in device_id:

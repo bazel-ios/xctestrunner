@@ -19,6 +19,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import sys
 
 from xctestrunner.shared import bundle_util
 from xctestrunner.shared import ios_constants
@@ -67,6 +68,8 @@ class XctestSession(object):
     self._logic_tests_to_run = None
     # The following fields are only for XCUITest.
     self._disable_uitest_auto_screenshots = True
+    print("XX2 ARCH/SDK", sdk, device_arch, file=sys.stderr)
+    sys.exit(1)
 
   def __enter__(self):
     return self
@@ -344,6 +347,7 @@ def _FinalizeTestType(
     if (test_type == ios_constants.TestType.XCTEST and
         not app_under_test_dir and sdk == ios_constants.SDK.IPHONESIMULATOR):
       test_type = ios_constants.TestType.LOGIC_TEST
+    # Hmm - it looks like this isn't respecting the arch
     logging.info('Will consider the test as test type %s to run.', test_type)
   else:
     test_type = original_test_type
