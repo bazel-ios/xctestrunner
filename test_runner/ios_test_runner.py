@@ -247,6 +247,11 @@ def _AddSimulatorTestSubParser(subparsers):
            'prefix with simulator type and os version. '
            'E.g., New-iPhone 6 Plus-10.2.')
   test_parser.set_defaults(func=_SimulatorTest)
+  optional_arguments = test_parser.add_argument_group('Optional arguments')
+  optional_arguments.add_argument(
+      '--product_module_name',
+      help='The product module name that will be set in the xctestrun file.'
+  )
 
 
 def _BuildParser():
