@@ -54,7 +54,7 @@ class XctestSession(object):
     self._work_dir = work_dir
     self._delete_work_dir = True
     self._output_dir = output_dir
-    self._force_xcodebuild = force_xcodebuild
+    self._force_xcodebuild = True
     self._delete_output_dir = True
     self._startup_timeout_sec = None
     self._destination_timeout_sec = None
